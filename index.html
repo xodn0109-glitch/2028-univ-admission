@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2028 대입 개편, 한눈에 보기 | 학생·학부모 가이드</title>
+<meta name="description" content="2028학년도 대입 전형 변화를 학생과 학부모가 쉽게 이해할 수 있도록 정리한 가이드">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f9fc;
+    --surface: #ffffff;
+    --text: #1a1f36;
+    --text-sub: #4a5075;
+    --text-mute: #7c8099;
+    --border: #e5e8f0;
+    --primary: #2b5cff;
+    --primary-soft: #eaf0ff;
+    --accent: #ff6b6b;
+    --accent-soft: #ffeaea;
+    --success: #1bb570;
+    --success-soft: #e6f8ef;
+    --warning: #f59e0b;
+    --warning-soft: #fef4e2;
+    --shadow: 0 4px 24px rgba(26, 31, 54, 0.06);
+    --shadow-md: 0 10px 40px rgba(26, 31, 54, 0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Navigation */
+  nav.topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo { font-weight: 900; font-size: 17px; color: var(--text); letter-spacing: -0.5px; }
+  .logo span { color: var(--primary); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--text-sub); text-decoration: none; font-size: 14px; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+  .menu-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text); }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 64px;
+    background: linear-gradient(135deg, #eef2ff 0%, #f8f9fc 50%, #fef0f0 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -50%; right: -10%; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(43,92,255,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block; padding: 6px 14px; background: var(--primary-soft); color: var(--primary);
+    font-size: 13px; font-weight: 700; border-radius: 100px; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px); font-weight: 900; letter-spacing: -1.5px;
+    line-height: 1.25; margin-bottom: 20px;
+  }
+  .hero h1 .highlight {
+    background: linear-gradient(120deg, transparent 50%, rgba(255,107,107,0.25) 50%);
+    padding: 0 4px;
+  }
+  .hero p.sub {
+    font-size: 18px; color: var(--text-sub); max-width: 640px; line-height: 1.7;
+  }
+  .hero-meta {
+    margin-top: 32px; display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--text-mute);
+  }
+  .hero-meta span::before { content: '📌 '; }
+
+  /* Section */
+  section { padding: 72px 0; }
+  .section-head { margin-bottom: 40px; }
+  .section-label {
+    display: inline-block; font-size: 13px; font-weight: 700; color: var(--primary);
+    letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase;
+  }
+  .section-head h2 {
+    font-size: clamp(26px, 3.5vw, 36px); font-weight: 900; letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+  .section-head p { color: var(--text-sub); font-size: 16px; max-width: 680px; }
+
+  /* Quick Summary Cards (3 pillars) */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pillar {
+    background: var(--surface); border-radius: 20px; padding: 32px; box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--border);
+  }
+  .pillar:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .pillar-icon {
+    width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 16px;
+  }
+  .pillar-1 .pillar-icon { background: var(--primary-soft); }
+  .pillar-2 .pillar-icon { background: var(--accent-soft); }
+  .pillar-3 .pillar-icon { background: var(--success-soft); }
+  .pillar h3 { font-size: 20px; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .pillar .old-new {
+    display: flex; align-items: center; gap: 10px; margin: 16px 0;
+    padding: 14px; background: var(--bg); border-radius: 12px; font-size: 14px;
+  }
+  .old-new .old { color: var(--text-mute); text-decoration: line-through; }
+  .old-new .arrow { color: var(--primary); font-weight: 900; }
+  .old-new .new { color: var(--text); font-weight: 700; }
+  .pillar ul { list-style: none; margin-top: 12px; }
+  .pillar ul li {
+    padding: 6px 0; font-size: 14px; color: var(--text-sub); padding-left: 20px; position: relative;
+  }
+  .pillar ul li::before {
+    content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 900;
+  }
+
+  /* Key point callout */
+  .callout {
+    background: var(--surface); border-left: 4px solid var(--accent); border-radius: 12px;
+    padding: 20px 24px; margin: 32px 0; box-shadow: var(--shadow);
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .callout-icon { font-size: 24px; flex-shrink: 0; }
+  .callout strong { color: var(--accent); }
+  .callout p { color: var(--text-sub); font-size: 15px; }
+
+  /* University Cards */
+  .uni-intro {
+    background: var(--primary-soft); border-radius: 16px; padding: 24px;
+    margin-bottom: 32px; font-size: 15px; color: var(--text);
+  }
+  .uni-intro strong { color: var(--primary); }
+  .uni-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .uni-card {
+    background: var(--surface); border-radius: 18px; padding: 28px; box-shadow: var(--shadow);
+    border: 1px solid var(--border); transition: transform 0.3s;
+  }
+  .uni-card:hover { transform: translateY(-2px); }
+  .uni-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+  }
+  .uni-name { font-size: 19px; font-weight: 900; letter-spacing: -0.5px; }
+  .uni-tag {
+    font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px;
+    background: var(--primary-soft); color: var(--primary);
+  }
+  .uni-tag.hot { background: var(--accent-soft); color: var(--accent); }
+  .uni-tag.calm { background: var(--success-soft); color: var(--success); }
+  .uni-card h4 { font-size: 13px; font-weight: 700; color: var(--text-mute); margin: 14px 0 8px; }
+  .uni-card ul { list-style: none; }
+  .uni-card ul li {
+    font-size: 14px; color: var(--text-sub); padding: 4px 0 4px 16px; position: relative; line-height: 1.6;
+  }
+  .uni-card ul li::before {
+    content: '•'; position: absolute; left: 4px; color: var(--primary);
+  }
+  .uni-card .key-quote {
+    margin-top: 16px; padding: 12px 14px; background: var(--bg); border-radius: 10px;
+    font-size: 13px; color: var(--text); font-weight: 500;
+  }
+
+  /* Timeline */
+  .timeline {
+    background: var(--surface); border-radius: 20px; padding: 40px; box-shadow: var(--shadow);
+  }
+  .timeline-item {
+    display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-date {
+    flex-shrink: 0; width: 120px; font-weight: 900; color: var(--primary); font-size: 14px;
+  }
+  .timeline-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .timeline-content p { font-size: 14px; color: var(--text-sub); }
+
+  /* Action Plan */
+  .action-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .action-card {
+    background: var(--surface); border-radius: 18px; padding: 28px; box-shadow: var(--shadow);
+    position: relative; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .action-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--primary);
+  }
+  .action-card.c-2::before { background: var(--accent); }
+  .action-card.c-3::before { background: var(--success); }
+  .action-card.c-4::before { background: var(--warning); }
+  .action-card .num {
+    display: inline-block; font-size: 12px; font-weight: 900; color: var(--primary);
+    letter-spacing: 1px; margin-bottom: 8px;
+  }
+  .action-card.c-2 .num { color: var(--accent); }
+  .action-card.c-3 .num { color: var(--success); }
+  .action-card.c-4 .num { color: var(--warning); }
+  .action-card h3 { font-size: 20px; font-weight: 900; margin-bottom: 14px; letter-spacing: -0.5px; }
+  .action-card ul { list-style: none; }
+  .action-card ul li {
+    padding: 8px 0 8px 26px; position: relative; font-size: 14.5px; color: var(--text-sub); line-height: 1.65;
+  }
+  .action-card ul li::before {
+    content: ''; position: absolute; left: 2px; top: 16px;
+    width: 14px; height: 2px; background: var(--primary); border-radius: 2px;
+  }
+  .action-card.c-2 ul li::before { background: var(--accent); }
+  .action-card.c-3 ul li::before { background: var(--success); }
+  .action-card.c-4 ul li::before { background: var(--warning); }
+
+  /* FAQ */
+  .faq { max-width: 820px; margin: 0 auto; }
+  .faq-item {
+    background: var(--surface); border-radius: 14px; margin-bottom: 12px; box-shadow: var(--shadow);
+    overflow: hidden; border: 1px solid var(--border);
+  }
+  .faq-q {
+    padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    font-weight: 700; font-size: 16px; transition: background 0.2s;
+  }
+  .faq-q:hover { background: var(--bg); }
+  .faq-q::after {
+    content: '+'; font-size: 24px; font-weight: 400; color: var(--primary); transition: transform 0.3s;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+    padding: 0 24px;
+  }
+  .faq-item.open .faq-a { max-height: 500px; padding: 0 24px 20px; }
+  .faq-a p { color: var(--text-sub); font-size: 15px; line-height: 1.75; }
+
+  /* Checklist */
+  .checklist-wrap { background: linear-gradient(135deg, #2b5cff 0%, #6b8eff 100%); border-radius: 24px; padding: 48px; color: white; }
+  .checklist-wrap h2 { color: white; margin-bottom: 24px; }
+  .checklist-wrap p { color: rgba(255,255,255,0.9); margin-bottom: 32px; font-size: 16px; }
+  .checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .checklist label {
+    background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
+    padding: 16px 18px; border-radius: 12px; display: flex; align-items: center; gap: 12px;
+    cursor: pointer; transition: background 0.2s; font-size: 14.5px;
+  }
+  .checklist label:hover { background: rgba(255,255,255,0.2); }
+  .checklist input[type="checkbox"] {
+    width: 20px; height: 20px; cursor: pointer; accent-color: #ff6b6b;
+  }
+  .checklist label.checked { text-decoration: line-through; opacity: 0.7; }
+
+  /* Footer */
+  footer {
+    background: var(--text); color: rgba(255,255,255,0.7); padding: 40px 0; margin-top: 40px;
+    font-size: 13px; line-height: 1.8;
+  }
+  footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  footer strong { color: white; }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: white; flex-direction: column; padding: 16px 24px; gap: 0; border-bottom: 1px solid var(--border); }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .menu-toggle { display: block; }
+    .hero { padding: 56px 0 48px; }
+    section { padding: 56px 0; }
+    .pillars, .uni-grid, .action-grid, .checklist { grid-template-columns: 1fr; }
+    .timeline-item { flex-direction: column; gap: 4px; }
+    .timeline-date { width: auto; }
+    .timeline { padding: 24px; }
+    .checklist-wrap { padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="container nav-inner">
+    <div class="logo">2028 <span>대입 가이드</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#changes">무엇이 바뀌나</a>
+      <a href="#universities">대학별 변화</a>
+      <a href="#action">대비 방안</a>
+      <a href="#faq">자주 묻는 질문</a>
+      <a href="#checklist">체크리스트</a>
+    </div>
+    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-badge">현 고1·고2 학생·학부모 필독</div>
+    <h1>2028 대입, 무엇이 <span class="highlight">바뀌나요?</span><br>한눈에 정리했습니다.</h1>
+    <p class="sub">
+      내신은 9등급제에서 5등급제로, 수능은 통합형으로 바뀝니다.
+      최상위권 대학은 정성평가·면접·최저를 강화하는 방향입니다.
+      우리 아이·내가 무엇을 준비해야 하는지 쉽게 알려드려요.
+    </p>
+    <div class="hero-meta">
+      <span>2028학년도 대입부터 적용</span>
+      <span>서울 주요 대학 2026년 4월 30일까지 시행계획 발표</span>
+    </div>
+  </div>
+</header>
+
+<!-- Section 1: What's changing -->
+<section id="changes">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">01 · 무엇이 바뀌나</div>
+      <h2>핵심은 세 가지입니다</h2>
+      <p>내신 체계, 수능 체계, 대입 전형 — 이 세 축이 동시에 변합니다. 하나씩 차근차근 살펴보세요.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar pillar-1">
+        <div class="pillar-icon">📝</div>
+        <h3>내신 변화</h3>
+        <div class="old-new">
+          <span class="old">9등급제</span>
+          <span class="arrow">→</span>
+          <span class="new">5등급제</span>
+        </div>
+        <ul>
+          <li>표준편차 미공개</li>
+          <li>성취도·원점수 같이 제공</li>
+          <li>진로 선택과목도 5등급 병기</li>
+          <li>융합선택(사·과탐)은 등급 미반영</li>
+        </ul>
+      </div>
+
+      <div class="pillar pillar-2">
+        <div class="pillar-icon">📚</div>
+        <h3>수능 변화</h3>
+        <div class="old-new">
+          <span class="old">선택형</span>
+          <span class="arrow">→</span>
+          <span class="new">통합형</span>
+        </div>
+        <ul>
+          <li>수학: 미적분2·기하 삭제</li>
+          <li>사탐·과탐: 선택과목 없음</li>
+          <li>통합사회·통합과학 필수</li>
+          <li>8월 모의평가(기존 9월→8월)</li>
+        </ul>
+      </div>
+
+      <div class="pillar pillar-3">
+        <div class="pillar-icon">🎯</div>
+        <h3>전형 변화</h3>
+        <div class="old-new">
+          <span class="old">정량 중심</span>
+          <span class="arrow">→</span>
+          <span class="new">정성 강화</span>
+        </div>
+        <ul>
+          <li>모든 전형에 정성평가 확대</li>
+          <li>면접·최저로 추가 변별</li>
+          <li>교과전형 졸업생 배제 강화</li>
+          <li>정시에도 생기부 반영 등장</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-icon">💡</div>
+      <p><strong>핵심 포인트.</strong> 전형의 큰 틀(수시·정시 구조)은 유지됩니다. 하지만 내신 변별력이 떨어지기 때문에 대학들은 <strong>정성평가·면접·최저</strong>로 학생을 가려내려 합니다. "수시만" 또는 "정시만" 준비하는 전략은 더 이상 유효하지 않습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Universities -->
+<section id="universities" style="background: white;">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">02 · 대학별 변화</div>
+      <h2>주요 대학은 어떻게 바뀌나요?</h2>
+      <p>서울 주요 6개 대학의 2028 전형 변화를 정리했습니다. 공통된 방향성을 파악해보세요.</p>
+    </div>
+
+    <div class="uni-intro">
+      📣 <strong>공통 신호:</strong> 모든 대학이 ① 서류 정성평가 강화, ② 면접·최저로 변별, ③ 출결·성취도·이수과목 중시, ④ 교과전형에서 졸업생 배제 강화의 방향으로 가고 있습니다.
+    </div>
+
+    <div class="uni-grid">
+      <div class="uni-card">
+        <div class="uni-header">
+          <div class="uni-name">🏛️ 서울대학교</div>
+          <span class="uni-tag">면접 혁신</span>
+        </div>
+        <h4>핵심 변화</h4>
+        <ul>
+          <li>지균 자사고 제외, 추천 인원 3명으로</li>
+          <li>서류: 역량중심 평가(사고력·창의력·공동체역량)</li>
+          <li>면접 방식 혁신: 프로젝트형·창의형·토론형</li>
+          <li>정시 일반전형 생기부 반영 비율 ↑</li>
+        </ul>
+        <div class="key-quote">💬 "면접으로 변별하겠다"는 공지</div>
+      </div>
+
+      <div class="uni-card">
+        <div class="uni-header">
+          <div class="uni-name">🏛️ 경희대학교</div>
+          <span class="uni-tag">성취도 중시</span>
+        </div>
+        <h4>핵심 변화</h4>
+        <ul>
+          <li>수시 학종 Two-track (서류→면접 / 서류→최저)</li>
+          <li>수시 지균 졸업생 지원 배제</li>
+          <li>교과 성취도·이수권장과목 중시</li>
+          <li>정시 학생부 반영 10% 전형 신설</li>
+        </ul>
+        <div class="key-quote">💬 생기부를 끝까지 놓으면 안 됨</div>
+      </div>
+
+      <div class="uni-card">
+        <div class="uni-header">
+          <div class="uni-name">🏛️ 동국대학교</div>
+          <span class="uni-tag">성취도 중시</span>
+        </div>
+        <h4>핵심 변화</h4>
+        <ul>
+          <li>수시 비율 ↑, 그 중 학종 비율 ↑</li>
+          <li>학종(Do dream) 면접 비율 확대</li>
+          <li>교과전형 성취도-교과등급 zone 도입</li>
+          <li>정시 정성평가 10% + 출결 중시</li>
+        </ul>
+        <div class="key-quote">💬 면접·성취도·출결 삼박자 강조</div>
+      </div>
+
+      <div class="uni-card">
+        <div class="uni-header">
+          <div class="uni-name">🏛️ 한양대학교</div>
+          <span class="uni-tag hot">정시 축소</span>
+        </div>
+        <h4>핵심 변화</h4>
+        <ul>
+          <li>수시 67% / 정시 33% (40% 벽 무너짐)</li>
+          <li>교과 서류평가 40%로 대폭 확대</li>
+          <li>학종 3개 → 2개(최저형·면접형) 단순화</li>
+          <li>정시에 학생부 종합평가 10% 반영</li>
+        </ul>
+        <div class="key-quote">💬 "내신·수능 변별력을 못 믿겠다"</div>
+      </div>
+
+      <div class="uni-card">
+        <div class="uni-header">
+          <div class="uni-name">🏛️ 서강대학교</div>
+          <span class="uni-tag calm">보수적 변화</span>
+        </div>
+        <h4>핵심 변화</h4>
+        <ul>
+          <li>법령 기준 유지 (수능 40%·교과 10%)</li>
+          <li>교과전형에 정성평가 도입 고민</li>
+          <li>학종에 면접·최저 도입 고민</li>
+          <li>정시 100 + 정시+학종 분할 가능성</li>
+        </ul>
+        <div class="key-quote">💬 보수적이지만 공통 고민은 같음</div>
+      </div>
+
+      <div class="uni-card">
+        <div class="uni-header">
+          <div class="uni-name">🏛️ 중앙대학교</div>
+          <span class="uni-tag hot">파격적 행보</span>
+        </div>
+        <h4>핵심 변화</h4>
+        <ul>
+          <li>수시 58% / 정시 42% (정시 ↑)</li>
+          <li>학종을 core·all·up 3트랙으로 재편</li>
+          <li>정시 "수능 등급만 + 서류" 전형 신설</li>
+          <li>동점자 처리 시 개근학생 우선</li>
+        </ul>
+        <div class="key-quote">💬 정시에도 생기부가 변별 도구로</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Timeline -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">03 · 일정</div>
+      <h2>꼭 챙겨야 할 일정</h2>
+      <p>주요 시점을 놓치지 마세요.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2025년</div>
+        <div class="timeline-content">
+          <h4>2028 수능 예시문항 배포</h4>
+          <p>평가원이 국어·수학·통합사회·통합과학 예시문항을 공개. 현 시점에서 가장 중요한 기준 자료.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026년 4월 30일</div>
+        <div class="timeline-content">
+          <h4>대학별 2028 대입 전형 시행계획 확정 발표</h4>
+          <p>모든 대학이 이때까지 최종안을 공개. 발표 직후 권장과목·성취도 활용 방식을 반드시 확인.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2027년 6·8월</div>
+        <div class="timeline-content">
+          <h4>2028 수능 모의평가</h4>
+          <p>예시문항보다 더 중요한 실제 변화의 척도. 이 두 시험이 수능 난이도의 기준.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2028학년도</div>
+        <div class="timeline-content">
+          <h4>새 제도 첫 시행</h4>
+          <p>대학·교사·학생·학부모 모두 처음. 정답을 주는 사람은 없습니다 — 맞춤형 대비만이 답.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: Action Plan -->
+<section id="action" style="background: white;">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">04 · 대비 방안</div>
+      <h2>학생·학부모, 이렇게 준비하세요</h2>
+      <p>네 가지 축(내신·학종·정시·기타)으로 나눠 구체적인 행동 지침을 정리했습니다.</p>
+    </div>
+
+    <div class="action-grid">
+      <div class="action-card c-1">
+        <span class="num">PLAN 01</span>
+        <h3>📝 내신 — 과목 선택이 먼저</h3>
+        <ul>
+          <li>희망 대학·계열의 권장 이수과목을 <strong>반드시</strong> 확인 (권장 ≠ 선택)</li>
+          <li>인문계열도 권장과목 체크 필수</li>
+          <li>등급뿐 아니라 <strong>성취도·원점수</strong> 챙기기</li>
+          <li>선택과목 다양화로 경쟁 치열 → 쉬운 과목만 노리지 말기</li>
+          <li>온세종학교·공동교육과정도 적극 활용</li>
+        </ul>
+      </div>
+
+      <div class="action-card c-2">
+        <span class="num">PLAN 02</span>
+        <h3>📄 학생부종합 — 모든 전형의 준비</h3>
+        <ul>
+          <li>학종 준비 = 2028에서는 모든 전형의 준비</li>
+          <li>핵심 3요소: <strong>학업역량·전공적합성·인성/사회성</strong></li>
+          <li>서·연·고·성·한·중은 학업역량, 경·외·서강·동·홍·숙은 진로 강조</li>
+          <li>어려운 탐구 X → 배운 것 바탕으로 심화·확장</li>
+          <li>개성·호기심·탐구 과정이 드러나는 생기부</li>
+          <li><strong>컨설팅 그대로 옮기지 말기</strong> — 학생 스스로 주제·결과</li>
+        </ul>
+      </div>
+
+      <div class="action-card c-3">
+        <span class="num">PLAN 03</span>
+        <h3>📊 정시 — 통합 과목이 관건</h3>
+        <ul>
+          <li>통합사회·통합과학을 꾸준히 (자연계=사회, 인문=과학도)</li>
+          <li>국어는 예시문항 기준 다소 난이도 ↑ 예상</li>
+          <li>수학은 미적2·기하 빠져 현역에게 유리</li>
+          <li>영어 절대평가 — 안정적 등급 확보 필수</li>
+          <li>정시 100 전형 유지되지만 <strong>최저 대비 중요</strong></li>
+        </ul>
+      </div>
+
+      <div class="action-card c-4">
+        <span class="num">PLAN 04</span>
+        <h3>⚠️ 출결·학폭 — 치명타가 될 수 있음</h3>
+        <ul>
+          <li>미인정 결석·조퇴·지각·결과 모두 감점 요인</li>
+          <li>중앙대는 <strong>동점자 처리 시 개근학생</strong> 우선</li>
+          <li>학폭 가해 조치사항은 전 전형에 반영</li>
+          <li>일부 대학은 <strong>1호 조치부터 지원 자체 불가</strong></li>
+          <li>성실한 학교생활이 가장 강력한 무기</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout" style="border-color: var(--success); margin-top: 32px;">
+      <div class="callout-icon">🌱</div>
+      <p><strong style="color: var(--success);">학부모님께.</strong> 1등급 한 과목 못 받았다고 자퇴나 학업 중단을 고민하지 마세요. 5등급제에서 1.0 학생은 생각보다 많지 않으며, 내신은 소수점 둘째 자리까지 촘촘히 갈립니다. 메디컬 진학 위한 자퇴·정시 전환은 오히려 더 위험 (정시에도 정성평가 도입).</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head" style="text-align: center;">
+      <div class="section-label">05 · 자주 묻는 질문</div>
+      <h2>학부모·학생들의 궁금증</h2>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">Q. 1.0을 못 받으면 최상위권 대학은 못 가나요?</div>
+        <div class="faq-a"><p>아닙니다. 9등급에서 5등급으로 바뀌면서 1.0 학생이 생각보다 많지 않을 것으로 연구 결과가 나오고 있습니다. 내신은 소수점 둘째 자리까지 촘촘히 갈리고, 진로·융합 선택과목까지 종합적으로 평가되므로 변별은 여전히 가능합니다. 한 과목 실수했다고 자퇴·학업 중단을 선택하는 것은 더 위험합니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 수시만 준비하거나 정시만 준비하면 안 되나요?</div>
+        <div class="faq-a"><p>2028부터는 어렵습니다. 수시는 물론이고 정시에도 정성평가·서류평가가 도입되고 있기 때문입니다. 중앙대는 "수능 등급만+서류" 전형, 한양대·동국대는 정시에 학생부 10% 반영 등의 전형을 신설합니다. 내신·생기부·수능 세 가지를 모두 관리하는 것이 기본 전략이 되었습니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 2028 수능은 어떤 문제가 나오나요?</div>
+        <div class="faq-a"><p>2025년 평가원에서 배포한 <strong>2028 수능 예시문항</strong>이 현재 가장 중요한 기준입니다. 검색어 "2028 수능 예시문항"으로 다운로드 가능하며, 국어·수학·통합사회·통합과학이 모의고사 형태로 제공됩니다. 2027년 6·8월 모의평가까지 나오면 그것이 더 정확한 척도가 됩니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 재수생은 불리한가요?</div>
+        <div class="faq-a"><p>네, 불리합니다. 경희대·중앙대 등이 <strong>학생부 교과전형에서 졸업생을 배제</strong>하는 움직임이 뚜렷하고, 한양대도 졸업생 지원 불가입니다. 9등급 체계로 받은 내신이 5등급 체계와 불리하게 비교되기 때문입니다. 현역 학생에게는 오히려 기회입니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 출결이 정말 그렇게 중요한가요?</div>
+        <div class="faq-a"><p>네, 더 중요해집니다. 중앙대는 동점자 처리 시 개근학생을 우선 선발합니다. 동국대·한양대는 정시에서도 출결을 반영합니다. 미인정 결석·조퇴·지각·결과는 모두 감점 요인입니다. 학교폭력 가해 조치사항은 어떤 전형에서든 불이익이며, 일부 대학은 아예 지원이 불가능합니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 학종은 어떻게 준비하면 되나요?</div>
+        <div class="faq-a"><p>거창하고 어려운 탐구가 아니라, <strong>수업에서 배운 것을 바탕으로 스스로 주제를 선정하고 탐구·확장</strong>하는 것이 핵심입니다. 학생의 개성·호기심·탐구 과정이 드러나는 생기부가 좋은 평가를 받습니다. 컨설팅 받은 내용을 그대로 옮기는 것은 피해야 합니다. 대학별 학생부종합전형 가이드북(동국대 등)을 참고하세요.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Checklist -->
+<section id="checklist">
+  <div class="container">
+    <div class="checklist-wrap">
+      <div class="section-label" style="color: rgba(255,255,255,0.8);">NOW · 지금 할 일</div>
+      <h2>오늘부터 챙길 체크리스트</h2>
+      <p>체크박스를 누르며 하나씩 점검해보세요. 브라우저에 자동 저장됩니다.</p>
+      <div class="checklist">
+        <label><input type="checkbox" data-key="c1"> 희망 대학·계열의 이수 권장과목 확인</label>
+        <label><input type="checkbox" data-key="c2"> 2028 수능 예시문항 다운로드</label>
+        <label><input type="checkbox" data-key="c3"> 내신 성취도·원점수 관리 시작</label>
+        <label><input type="checkbox" data-key="c4"> 학교 공동교육과정·온세종학교 조사</label>
+        <label><input type="checkbox" data-key="c5"> 학종 가이드북(동국대 등) 읽기</label>
+        <label><input type="checkbox" data-key="c6"> 생기부 탐구 주제 스스로 정하기</label>
+        <label><input type="checkbox" data-key="c7"> 통합사회·통합과학 학습 계획</label>
+        <label><input type="checkbox" data-key="c8"> 출결·지각 관리 다짐</label>
+        <label><input type="checkbox" data-key="c9"> 영어 절대평가 등급 확보 플랜</label>
+        <label><input type="checkbox" data-key="c10"> 2026년 4월 30일 대학 발표 알림 설정</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <strong>2028 대입 가이드</strong><br>
+      원본 자료: 두루고 강지훈 — 「2028 대입 개편 관련 대응방안」
+    </div>
+    <div>
+      ⚠️ 본 페이지는 안내 자료이며, 최종 정보는 각 대학 공식 발표를 확인하세요.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+  // Checklist with localStorage
+  document.querySelectorAll('.checklist input[type="checkbox"]').forEach(cb => {
+    const key = 'checklist-' + cb.dataset.key;
+    if (localStorage.getItem(key) === 'true') {
+      cb.checked = true;
+      cb.parentElement.classList.add('checked');
+    }
+    cb.addEventListener('change', () => {
+      localStorage.setItem(key, cb.checked);
+      cb.parentElement.classList.toggle('checked', cb.checked);
+    });
+  });
+
+  // Close mobile nav on link click
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
